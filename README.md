@@ -1,6 +1,7 @@
 # React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Employee Management System (Working on... )
+- Create tasks using admin id and password
+- view tasks using employee id and password
 
 Currently, two official plugins are available:
 

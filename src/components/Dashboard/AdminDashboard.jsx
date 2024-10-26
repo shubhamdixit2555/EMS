@@ -1,16 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../Other/Header'
 import CreateTask from '../Other/CreateTask'
 import AllTask from '../Other/AllTask'
 
-const AdminDashboard = () => {
+const AdminDashboard = ({data}) => {
   return (
-    <>
-        <Header />
-        <CreateTask />
-        <AllTask />
-    </>
-    
+    <div>
+      <Header data={data}/>
+      <CreateTask />
+      <AllTask />
+    </div>
   )
 }
 

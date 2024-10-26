@@ -1,53 +1,24 @@
 import React from 'react'
+import AcceptTask from './AcceptTask'
+import NewTasks from './NewTasks'
+import CompleteTask from './CompleteTask'
+import FailedTask from './FailedTask'
 
-const Tasks = () => {
+const Tasks = ({data}) => {
+    console.log(data);
   return (
     <div id='Tasks' className='h-[55%] w-full flex flex-nowrap flex-col md:flex-row mt-10 py-5 items-center justify-start gap-3 overflow-x-auto '>
-        <div className='w-full min-h-[300px] md:min-h-[200px] md:w-[300px] p-5 bg-orange-500 flex-shrink-0 rounded-xl flex flex-col gap-3 '>
-            <p className='text-sm text-end'>22 Oct 2024</p>
-            <h2 className='text-3xl font-semibold'>Ek Task hai</h2>
-            <h3 className='text-2xl'>Phle ye website complete kro</h3>
-        </div>
-        <div className='w-full min-h-[300px] md:min-h-[200px] md:w-[300px] p-5 bg-blue-500 flex-shrink-0 rounded-xl flex flex-col gap-3 '>
-            <p className='text-sm text-end'>22 Oct 2024</p>
-            <h2 className='text-3xl font-semibold'>Ek Task hai</h2>
-            <h3 className='text-2xl'>Phle ye website complete kro</h3>
-        </div>
-        <div className='w-full min-h-[300px] md:min-h-[200px] md:w-[300px] p-5 bg-green-500 flex-shrink-0 rounded-xl flex flex-col gap-3 '>
-            <p className='text-sm text-end'>22 Oct 2024</p>
-            <h2 className='text-3xl font-semibold'>Ek Task hai</h2>
-            <h3 className='text-2xl'>Phle ye website complete kro</h3>
-        </div>
-        <div className='w-full min-h-[300px] md:min-h-[200px] md:w-[300px] p-5 bg-purple-500 flex-shrink-0 rounded-xl flex flex-col gap-3 '>
-            <p className='text-sm text-end'>22 Oct 2024</p>
-            <h2 className='text-3xl font-semibold'>Ek Task hai</h2>
-            <h3 className='text-2xl'>Phle ye website complete kro</h3>
-        </div>
-        <div className='w-full min-h-[300px] md:min-h-[200px] md:w-[300px] p-5 bg-red-500 flex-shrink-0 rounded-xl flex flex-col gap-3 '>
-            <p className='text-sm text-end'>22 Oct 2024</p>
-            <h2 className='text-3xl font-semibold'>Ek Task hai</h2>
-            <h3 className='text-2xl'>Phle ye website complete kro</h3>
-        </div>
-        <div className='w-full min-h-[300px] md:min-h-[200px] md:w-[300px] p-5 bg-pink-500 flex-shrink-0 rounded-xl flex flex-col gap-3 '>
-            <p className='text-sm text-end'>22 Oct 2024</p>
-            <h2 className='text-3xl font-semibold'>Ek Task hai</h2>
-            <h3 className='text-2xl'>Phle ye website complete kro</h3>
-        </div>
-        <div className='w-full min-h-[300px] md:min-h-[200px] md:w-[300px] p-5 bg-yellow-500 flex-shrink-0 rounded-xl flex flex-col gap-3 '>
-            <p className='text-sm text-end'>22 Oct 2024</p>
-            <h2 className='text-3xl font-semibold'>Ek Task hai</h2>
-            <h3 className='text-2xl'>Phle ye website complete kro</h3>
-        </div>
-        <div className='w-full min-h-[300px] md:min-h-[200px] md:w-[300px] p-5 bg-slate-500 flex-shrink-0 rounded-xl flex flex-col gap-3 '>
-            <p className='text-sm text-end'>22 Oct 2024</p>
-            <h2 className='text-3xl font-semibold'>Ek Task hai</h2>
-            <h3 className='text-2xl'>Phle ye website complete kro</h3>
-        </div>
-        <div className='w-full min-h-[300px] md:min-h-[200px] md:w-[300px] p-5 bg-purple-500 flex-shrink-0 rounded-xl flex flex-col gap-3 '>
-            <p className='text-sm text-end'>22 Oct 2024</p>
-            <h2 className='text-3xl font-semibold'>Ek Task hai</h2>
-            <h3 className='text-2xl'>Phle ye website complete kro</h3>
-        </div>
+        {data.tasks.map((elem) => {
+            if(elem.active){
+                return <AcceptTask key={elem.id} task={elem}/>
+            } else if(elem.newTask){
+                return <NewTasks key={elem.id} task={elem}/>
+            } else if(elem.completed){
+                return <CompleteTask key={elem.id} task={elem}/>
+            } else if(elem.failed){
+                return <FailedTask key={elem.id} task={elem}/>
+            }
+        })}
     </div>
   )
 }

@@ -1,89 +1,90 @@
+
 # Employee Management System (EMS)
 
-## Overview
-
-The Employee Management System (EMS) is a React-based application designed for managing tasks assigned to employees. The project features a role-based login system with separate dashboards for administrators and employees. Tasks can be created by an admin, assigned to employees, and viewed by each respective employee. EMS is built using **React** with **Vite** for faster development and optimized performance.
-
-This application is currently configured to operate using **local storage** rather than a backend database, which means data will not persist if the local storage is cleared or if accessed across different devices.
+The **Employee Management System (EMS)** is a web application built with React and Vite. It allows an administrator to create and assign tasks to employees, while employees can view and manage their assigned tasks. This project relies on browser local storage for data persistence, meaning data will be reset upon page reload.
 
 ## Features
 
-- **Admin Dashboard**
-  - Create tasks with a title, description, category, due date, and employee assignment.
-  - View a list of tasks, categorized as active, new, completed, and failed.
-  
-- **Employee Dashboard**
-  - Login and view assigned tasks.
-  - See the status of each task (active, new, completed, or failed).
-  - Update the task's status as completed or mark it as failed.
+- **Admin Functionality:**
+  - Create and assign tasks to employees.
+  - View task details and assign specific categories, descriptions, and deadlines.
+- **Employee Functionality:**
+  - View assigned tasks.
+  - Mark tasks as complete (data saved in local storage but reset upon reload without a backend database).
 
-## Admin and Employee Credentials
+## Tech Stack
 
-### Admin Login
-- **Email**: `admin@ems.com`
-- **Password**: `admin123`
+- **Frontend:** React (with Vite for fast development)
+- **Data Storage:** Browser local storage
 
-### Employee Logins
-| Employee Name | Email          | Password |
-|---------------|----------------|----------|
-| Arjun         | e1@me.com      | 123      |
-| Sneha         | e2@me.com      | 123      |
-| Ravi          | e3@me.com      | 123      |
-| Priya         | e4@me.com      | 123      |
-| Karan         | e5@me.com      | 123      |
+## Getting Started
 
-## Installation and Setup
+### Prerequisites
+
+- Node.js and npm should be installed on your machine.
+
+### Installation
 
 1. Clone the repository:
+
    ```bash
-   git clone https://github.com/yourusername/Employee-Management-System.git
+   git clone https://github.com/shubhamdixit2555/EMS.git
    ```
 
 2. Navigate to the project directory:
+
    ```bash
-   cd Employee-Management-System
+   cd EMS
    ```
 
 3. Install dependencies:
+
    ```bash
    npm install
    ```
 
-4. Run the development server:
+4. Start the development server:
+
    ```bash
    npm run dev
    ```
 
-5. Open the application in your browser at `http://localhost:5173`.
+5. Open your browser and visit `http://localhost:5173` to view the application.
 
-## Project Structure
+## Usage
 
-- **Admin Dashboard**: Accessible by logging in with admin credentials. Allows task creation, assignment, and status tracking for each employee.
-- **Employee Dashboard**: Allows employees to view and update their tasks. Tasks are managed via local storage, meaning changes will persist only in the browser where the task was created.
+### Admin Access
+1. Login with the provided admin credentials.
+2. Navigate to the **Admin Dashboard** to create and assign tasks to employees.
+3. Enter the task details and assign the task to an employee by name.
 
-## Technologies Used
+### Employee Access
+1. Login with employee credentials to access the **Employee Dashboard**.
+2. View assigned tasks and mark tasks as complete (note that changes are reset upon reload due to local storage limitations).
 
-- **React** for building the user interface.
-- **Vite** for fast development builds.
-- **Local Storage** for temporary data storage.
+### Credentials
 
-## How It Works
+#### Admin
+- **Email:** `admin@example.com`
+- **Password:** `admin123`
 
-1. **Task Creation**: Admin can create a task in the Admin Dashboard, specifying the employee the task should be assigned to. The task data is stored in local storage.
-2. **Task Viewing**: Each employee logs into the Employee Dashboard to view their tasks. Tasks are retrieved from local storage upon login.
-3. **Task Status Update**: Employees can update the task status (completed or failed). This update reflects only in local storage.
+#### Employees
 
-## Limitations
+| Employee  | Email            | Password |
+|-----------|-------------------|----------|
+| Arjun     | e1@me.com        | 123      |
+| Sneha     | e2@me.com        | 123      |
+| Ravi      | e3@me.com        | 123      |
+| Priya     | e4@me.com        | 123      |
+| Karan     | e5@me.com        | 123      |
 
-Since the EMS application is built with local storage:
-- **Data Persistence**: Task data will not persist across devices or browsers and may be lost if local storage is cleared.
-- **No Real-Time Updates**: Changes are visible only after they are stored and cannot be synced across multiple users or devices.
+## Notes
 
-For a fully functional system with persistent data, integrating a backend with a database is recommended.
+- **Local Storage Limitations:** Since EMS uses local storage instead of a backend, data will be reset upon page refresh. A backend implementation is recommended for data persistence.
+- **Project Link:** [EMS on GitHub](https://github.com/shubhamdixit2555/EMS)
 
-## Future Development (To Be Implemented)
+## Contributing
 
-- Backend database for persistent data storage.
-- Role-based access control.
-- Notifications for task assignments and updates.
-- Advanced task filtering and sorting.
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Submit a pull request with a detailed explanation.

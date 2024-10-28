@@ -81,7 +81,7 @@ The **Employee Management System (EMS)** is a web application built with React a
 ## Notes
 
 - **Local Storage Limitations:** Since EMS uses local storage instead of a backend, data will be reset upon page refresh. A backend implementation is recommended for data persistence.
-- **Project Link:** [EMS on GitHub](https://github.com/shubhamdixit2555/EMS)
+- **Project Link:** [Click here](https://project-ems.netlify.app/)
 
 ## Contributing
 

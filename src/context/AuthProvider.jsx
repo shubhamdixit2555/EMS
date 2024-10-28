@@ -1,27 +1,26 @@
-/* eslint-disable no-unused-vars */
+import React, { createContext, useEffect, useState } from 'react';
+import { getLocalStorage, setLocalStorage } from '../utils/localStorage';
 
-import React, { createContext, useEffect, useState } from 'react'
-import {getLocalStorage, setLocalStorage} from '../utils/localStorage'
+export const AuthContext = createContext();
 
-export const AuthContext = createContext()
-
-// eslint-disable-next-line react/prop-types
-const AuthProvider = ({children}) => {
-  const [userData, setUserData] = useState(null)
+const AuthProvider = ({ children }) => {
+  const [userData, setUserData] = useState(() => {
+    const localData = getLocalStorage();
+    return localData ? localData : { employees: [] };
+  });
 
   useEffect(() => {
-    setLocalStorage();
-
-    const { employees, admin } = getLocalStorage();
-    setUserData({ employees, admin });
-  }, []);
-  
+    // Update localStorage whenever userData changes
+    if (userData) {
+      setLocalStorage(userData);
+    }
+  }, [userData]);
 
   return (
-    <AuthContext.Provider value={userData}>
+    <AuthContext.Provider value={[userData, setUserData]}>
       {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
-export default AuthProvider
+export default AuthProvider;

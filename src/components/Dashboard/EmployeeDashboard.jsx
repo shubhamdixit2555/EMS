@@ -3,12 +3,12 @@ import Header from '../Other/Header'
 import TasksNotification from '../Other/TasksNotification'
 import Tasks from '../TaksList/Tasks'
 
-const EmployeeDashboard = ({data}) => {
+const EmployeeDashboard = (props) => {
   return (
     <div>
-        <Header data={data}/>
-        <TasksNotification data={data}/>
-        <Tasks data={data}/>
+        <Header changeUser={props.changeUser} data={props.data}/>
+        <TasksNotification data={props.data}/>
+        <Tasks data={props.data}/>
     </div>
   )
 }

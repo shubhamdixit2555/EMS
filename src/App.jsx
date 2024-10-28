@@ -9,30 +9,35 @@ import { AuthContext } from "./context/AuthProvider";
 const App = () => {
   const [user, setUser] = useState(null);
   const [loggedInUserData, setLoggedInUserData] = useState(null);
-  const authData = useContext(AuthContext);
+  const [userData, setUserData] = useContext(AuthContext);
 
-  // useEffect(() => {
-  //     const loggedInUser = localStorage.getItem("loggedInUser")
-  // })
+  useEffect(() => {
+      const loggedInUser = localStorage.getItem("loggedInUser")
+      if (loggedInUser) {
+        const userData = JSON.parse(loggedInUser)
+        setUser(userData.role);
+        setLoggedInUserData(userData.data);
+      }
+  },[])
 
   const handleLogin = (email, password) => {
-    if (authData && authData.admin.find((e) => {
+    if (userData && userData.admin.find((e) => {
         return e.email === email && e.password === password;
       })){
-        const admin = authData.admin.find((e) => {
+        const admin = userData.admin.find((e) => {
           return e.email === email && e.password === password;
         });
         setUser("admin");
         setLoggedInUserData(admin);
-        localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
-    } else if (authData) {
-      const employee = authData.employees.find((e) => {
+        localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin", data : admin }));
+    } else if (userData) {
+      const employee = userData.employees.find((e) => {
         return e.email === email && e.password === password;
       });
       if (employee) {
         setUser("employee");
         setLoggedInUserData(employee);
-        localStorage.setItem("loggedInUser",JSON.stringify({ role: "employee" }));
+        localStorage.setItem("loggedInUser",JSON.stringify({ role: "employee", data : employee }));
       } else {
         alert("Invalid credentials");
       }
@@ -44,9 +49,9 @@ const App = () => {
       <div className="px-4 md:px-8">
         {!user ? <Login handleLogin={handleLogin} /> : ""}
         {user == "admin" ? (
-          <AdminDashboard data={loggedInUserData} />
+          <AdminDashboard changeUser={setUser} data={loggedInUserData} />
         ) : user == "employee" ? (
-          <EmployeeDashboard data={loggedInUserData} />
+          <EmployeeDashboard changeUser={setUser} data={loggedInUserData} />
         ) : null}
       </div>
     </>

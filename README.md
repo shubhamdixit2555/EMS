@@ -65,8 +65,8 @@ The **Employee Management System (EMS)** is a web application built with React a
 ### Credentials
 
 #### Admin
-- **Email:** `admin@example.com`
-- **Password:** `admin123`
+- **Email:** `admin@me.com`
+- **Password:** `123`
 
 #### Employees
 
